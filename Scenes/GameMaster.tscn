@@ -325,9 +325,6 @@ custom_fonts/font = SubResource( 6 )
 text = "Version 1.0
 Made By Chris Kurcz"
 valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ViewportContainer" type="ViewportContainer" parent="GUI"]
 anchor_left = 1.0
@@ -661,6 +658,16 @@ stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="VersionLabel" type="Label" parent="GUI/GameOverMenu"]
+anchor_left = 0.005
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Version 1.0
+Made By Chris Kurcz"
+valign = 2
 
 [node name="BigMessageUI" type="Control" parent="GUI" groups=["BigMessageUI"]]
 anchor_left = 0.5
