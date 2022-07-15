@@ -1,5 +1,6 @@
 # Unnamed Dungeon Crawler
 Created by Chris Kurcz
+
 Version 1.0
 
 TO PLAY THE GAME:
@@ -17,6 +18,6 @@ KNOWN ISSUES:
 - After selecting replay from the game over screen, if the screen turns completely black simply press pause/resume to fix the screen
 
 CREDITS:
-Music by DOS-88
-Sound effects created by Canari Games
-Special thanks to friends who helped test the game
+- Music by DOS-88
+- Sound effects created by Canari Games
+- Special thanks to friends who helped test the game
