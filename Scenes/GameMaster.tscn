@@ -1,0 +1,797 @@
+[gd_scene load_steps=59 format=2]
+
+[ext_resource path="res://Scripts/Player/CameraRig.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Systems/GameMaster.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Game Music (By DOS-88)/Checking Manifest.mp3" type="AudioStream" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Systems/RoomGenerator.gd" type="Script" id=5]
+[ext_resource path="res://Materials/Palette Shaders/ChillGreyscale.tres" type="Material" id=6]
+[ext_resource path="res://Materials/Palette Shaders/Sunset.tres" type="Material" id=7]
+[ext_resource path="res://Materials/Palette Shaders/Strawberry.tres" type="Material" id=8]
+[ext_resource path="res://Materials/Palette Shaders/Midnight.tres" type="Material" id=9]
+[ext_resource path="res://Materials/Palette Shaders/Jungle.tres" type="Material" id=10]
+[ext_resource path="res://Scripts/UI/Minimap.gd" type="Script" id=11]
+[ext_resource path="res://Assets/GUI/HeartFull.png" type="Texture" id=12]
+[ext_resource path="res://Assets/GUI/KeyEmpty.png" type="Texture" id=13]
+[ext_resource path="res://Scripts/UI/HealthUI.gd" type="Script" id=14]
+[ext_resource path="res://Assets/GUI/HeartEmpty.png" type="Texture" id=15]
+[ext_resource path="res://Assets/GUI/KeyFull.png" type="Texture" id=16]
+[ext_resource path="res://Scripts/UI/KeyUI.gd" type="Script" id=17]
+[ext_resource path="res://Scripts/UI/MessageUI.gd" type="Script" id=18]
+[ext_resource path="res://Materials/Palette Shaders/DarkMode.tres" type="Material" id=19]
+[ext_resource path="res://Materials/Palette Shaders/Ocean.tres" type="Material" id=20]
+[ext_resource path="res://Scripts/Systems/EffectsHandler.gd" type="Script" id=21]
+[ext_resource path="res://Scripts/UI/BigMessageUI.gd" type="Script" id=22]
+[ext_resource path="res://Materials/Palette Shaders/Coffee.tres" type="Material" id=23]
+[ext_resource path="res://Materials/Palette Shaders/Hollow.tres" type="Material" id=24]
+[ext_resource path="res://Materials/Palette Shaders/PeamStunk.tres" type="Material" id=25]
+[ext_resource path="res://Materials/Palette Shaders/Internet.tres" type="Material" id=26]
+[ext_resource path="res://Materials/Palette Shaders/DemiBoy.tres" type="Material" id=27]
+[ext_resource path="res://Assets/Drops/Clover.png" type="Texture" id=28]
+[ext_resource path="res://Materials/Palette Shaders/Myst.tres" type="Material" id=29]
+[ext_resource path="res://Materials/Palette Shaders/Warm.tres" type="Material" id=30]
+[ext_resource path="res://Scripts/UI/ItemUI.gd" type="Script" id=31]
+[ext_resource path="res://Scripts/UI/PauseMenu.gd" type="Script" id=32]
+[ext_resource path="res://Assets/GUI/MenuButtons/PauseResumeNormal.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Fonts/MyFont-Regular.otf" type="DynamicFontData" id=34]
+[ext_resource path="res://Assets/GUI/MenuButtons/PauseResumeHover.png" type="Texture" id=35]
+[ext_resource path="res://Assets/GUI/MenuButtons/PauseResumePressed.png" type="Texture" id=36]
+[ext_resource path="res://Assets/GUI/MenuButtons/PauseQuitHover.png" type="Texture" id=37]
+[ext_resource path="res://Assets/GUI/MenuButtons/PauseQuitPressed.png" type="Texture" id=38]
+[ext_resource path="res://Assets/GUI/MenuButtons/PauseQuitNormal.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Drops/MultiShot.png" type="Texture" id=40]
+[ext_resource path="res://Assets/GUI/MenuButtons/MenuPressed.png" type="Texture" id=41]
+[ext_resource path="res://Assets/GUI/MenuButtons/MenuNormal.png" type="Texture" id=42]
+[ext_resource path="res://Assets/GUI/MenuButtons/MenuHover.png" type="Texture" id=43]
+[ext_resource path="res://Assets/GUI/MenuButtons/ReplayPressed.png" type="Texture" id=44]
+[ext_resource path="res://Assets/GUI/MenuButtons/ReplayNormal.png" type="Texture" id=45]
+[ext_resource path="res://Assets/GUI/MenuButtons/ReplayHover.png" type="Texture" id=46]
+[ext_resource path="res://Scripts/UI/GameOverMenu.gd" type="Script" id=47]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_sky_contribution = 0.0
+fog_enabled = true
+fog_color = Color( 0, 0, 0, 1 )
+fog_depth_begin = 18.0
+fog_depth_end = 24.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 34 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 34 )
+
+[sub_resource type="StreamTexture" id=3]
+flags = 16
+load_path = "res://.import/Arrow.png-5ac0ccd3636e55e9101786eda30b5b89.stex"
+
+[sub_resource type="StreamTexture" id=4]
+load_path = "res://.import/Boomerang.png-64071df5618320ebecafd4451a1aca1b.stex"
+
+[sub_resource type="StreamTexture" id=5]
+load_path = "res://.import/Wings.png-1469f41792a55a91c7391ed373c975c4.stex"
+
+[sub_resource type="Animation" id=7]
+resource_name = "GameOver"
+length = 4.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=10]
+size = 64
+font_data = ExtResource( 34 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 32
+font_data = ExtResource( 34 )
+
+[node name="GameMaster" type="Spatial" groups=["GameMaster"]]
+script = ExtResource( 2 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="RoomGenerator" type="Spatial" parent="."]
+script = ExtResource( 5 )
+
+[node name="EffectsHandler" type="Spatial" parent="."]
+script = ExtResource( 21 )
+
+[node name="Tween1" type="Tween" parent="EffectsHandler"]
+
+[node name="Tween2" type="Tween" parent="EffectsHandler"]
+
+[node name="CameraRig" type="Spatial" parent="." groups=["Camera"]]
+script = ExtResource( 1 )
+
+[node name="Camera" type="Camera" parent="CameraRig"]
+transform = Transform( 1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 8, 10 )
+fov = 55.0
+
+[node name="GUI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PauseMenu" type="Control" parent="GUI"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="GUI/PauseMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.776471 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauesedLabel" type="Label" parent="GUI/PauseMenu"]
+anchor_left = 0.5
+anchor_top = 0.05
+anchor_right = 0.5
+anchor_bottom = 0.1
+margin_left = -200.0
+margin_top = -50.0
+margin_right = 200.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "PAUSED"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemNameLabel" type="Label" parent="GUI/PauseMenu"]
+anchor_left = 0.055
+anchor_top = 0.105
+anchor_right = 0.055
+anchor_bottom = 0.105
+margin_left = 0.400002
+margin_top = -0.399994
+margin_right = 500.0
+custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "ARRow"
+valign = 1
+
+[node name="ItemDescLabel" type="Label" parent="GUI/PauseMenu"]
+anchor_left = 0.055
+anchor_top = 0.155
+anchor_right = 0.055
+anchor_bottom = 0.155
+margin_left = 0.400002
+margin_top = -0.399994
+margin_right = 600.0
+margin_bottom = 700.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "piercing Bullets"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsNameLabel" type="Label" parent="GUI/PauseMenu"]
+anchor_left = 0.675
+anchor_top = 0.405
+anchor_right = 0.675
+anchor_bottom = 0.405
+margin_top = -0.399994
+custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "SPEED:
+FIRERATE:
+SHOT SPEED:
+KNOCKBACK:
+RANGE:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsDescLabel" type="Label" parent="GUI/PauseMenu"]
+anchor_left = 0.855
+anchor_top = 0.405
+anchor_right = 0.875
+anchor_bottom = 0.405
+margin_left = 0.400002
+margin_top = -0.399994
+margin_right = 100.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "4
+1
+6
+1
+5"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResumeButton" type="TextureButton" parent="GUI/PauseMenu"]
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.4
+margin_left = -112.0
+margin_top = -24.0
+margin_right = -56.0
+margin_bottom = -12.0
+rect_scale = Vector2( 4, 4 )
+texture_normal = ExtResource( 33 )
+texture_pressed = ExtResource( 36 )
+texture_hover = ExtResource( 35 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="TextureButton" parent="GUI/PauseMenu"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = -24.0
+margin_right = -56.0
+margin_bottom = -12.0
+rect_scale = Vector2( 4, 4 )
+texture_normal = ExtResource( 42 )
+texture_pressed = ExtResource( 41 )
+texture_hover = ExtResource( 43 )
+expand = true
+stretch_mode = 2
+
+[node name="QuitButton" type="TextureButton" parent="GUI/PauseMenu"]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+margin_left = -112.0
+margin_top = -24.0
+margin_right = -56.0
+margin_bottom = -12.0
+rect_scale = Vector2( 4, 4 )
+texture_normal = ExtResource( 39 )
+texture_pressed = ExtResource( 38 )
+texture_hover = ExtResource( 37 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VersionLabel" type="Label" parent="GUI/PauseMenu"]
+anchor_left = 0.005
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Version 1.0
+Made By Chris Kurcz"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="GUI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -300.0
+margin_bottom = 300.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="GUI/ViewportContainer"]
+size = Vector2( 300, 300 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Minimap" type="Node2D" parent="GUI/ViewportContainer/Viewport" groups=["Camera", "Minimap"]]
+position = Vector2( 150, 150 )
+script = ExtResource( 11 )
+
+[node name="MiniMapCamera2D" type="Camera2D" parent="GUI/ViewportContainer/Viewport/Minimap"]
+current = true
+
+[node name="SpriteHolder" type="Node2D" parent="GUI/ViewportContainer/Viewport/Minimap"]
+
+[node name="HealthUI" type="Control" parent="GUI"]
+margin_right = 96.0
+margin_bottom = 20.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeartsEmpty" type="TextureRect" parent="GUI/HealthUI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 64.0
+margin_bottom = 16.0
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeartsFull" type="TextureRect" parent="GUI/HealthUI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 47.0
+margin_bottom = 16.0
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KeyUI" type="Control" parent="GUI"]
+margin_right = 20.0
+margin_bottom = 20.0
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KeyEmpty" type="TextureRect" parent="GUI/KeyUI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KeyFull" type="TextureRect" parent="GUI/KeyUI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemUI" type="Control" parent="GUI" groups=["ItemUI"]]
+margin_right = 20.0
+margin_bottom = 100.0
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloverUI" type="TextureRect" parent="GUI/ItemUI"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArrowUI" type="TextureRect" parent="GUI/ItemUI"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_scale = Vector2( 4, 4 )
+texture = SubResource( 3 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MultiShotUI" type="TextureRect" parent="GUI/ItemUI"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 40 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BoomerangUI" type="TextureRect" parent="GUI/ItemUI"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_scale = Vector2( 4, 4 )
+texture = SubResource( 4 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WingsUI" type="TextureRect" parent="GUI/ItemUI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_scale = Vector2( 4, 4 )
+texture = SubResource( 5 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageUI" type="Control" parent="GUI" groups=["MessageUI"]]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -360.0
+margin_top = 20.0
+margin_right = 360.0
+margin_bottom = 100.0
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/MessageUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TransitionColorRect" type="ColorRect" parent="GUI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TransitionAnimationPlayer" type="AnimationPlayer" parent="GUI/TransitionColorRect"]
+anims/GameOver = SubResource( 7 )
+anims/TransitionIn = SubResource( 8 )
+anims/TransitionOut = SubResource( 9 )
+
+[node name="GameOverMenu" type="Control" parent="GUI"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 47 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="GUI/GameOverMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.776471 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverLabel" type="Label" parent="GUI/GameOverMenu"]
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+margin_left = -300.0
+margin_top = -50.0
+margin_right = 300.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "GAME OVER"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="GUI/GameOverMenu"]
+anchor_left = 0.5
+anchor_top = 0.325
+anchor_right = 0.5
+anchor_bottom = 0.325
+margin_left = -300.0
+margin_top = -50.0
+margin_right = 300.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "SCORE: 0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReplayButton" type="TextureButton" parent="GUI/GameOverMenu"]
+anchor_left = 0.5
+anchor_top = 0.45
+anchor_right = 0.5
+anchor_bottom = 0.45
+margin_left = -112.0
+margin_top = -24.0
+margin_right = -56.0
+margin_bottom = -12.0
+rect_scale = Vector2( 4, 4 )
+texture_normal = ExtResource( 45 )
+texture_pressed = ExtResource( 44 )
+texture_hover = ExtResource( 46 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="TextureButton" parent="GUI/GameOverMenu"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.55
+anchor_right = 0.5
+anchor_bottom = 0.55
+margin_left = -112.0
+margin_top = -24.0
+margin_right = -56.0
+margin_bottom = -12.0
+rect_scale = Vector2( 4, 4 )
+texture_normal = ExtResource( 42 )
+texture_pressed = ExtResource( 41 )
+texture_hover = ExtResource( 43 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="TextureButton" parent="GUI/GameOverMenu"]
+anchor_left = 0.5
+anchor_top = 0.65
+anchor_right = 0.5
+anchor_bottom = 0.65
+margin_left = -112.0
+margin_top = -24.0
+margin_right = -56.0
+margin_bottom = -12.0
+rect_scale = Vector2( 4, 4 )
+texture_normal = ExtResource( 39 )
+texture_pressed = ExtResource( 38 )
+texture_hover = ExtResource( 37 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BigMessageUI" type="Control" parent="GUI" groups=["BigMessageUI"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -360.0
+margin_top = -40.0
+margin_right = 360.0
+margin_bottom = 40.0
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/BigMessageUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Palettes" type="Node2D" parent="."]
+
+[node name="Palette0ChillGreyscale" type="Sprite" parent="Palettes"]
+material = ExtResource( 6 )
+position = Vector2( 960, 540 )
+scale = Vector2( 31, 18 )
+texture = ExtResource( 4 )
+
+[node name="Palette1Ocean" type="Sprite" parent="Palettes"]
+visible = false
+material = ExtResource( 20 )
+position = Vector2( 960, 540 )
+scale = Vector2( 31, 18 )
+texture = ExtResource( 4 )
+
+[node name="Palette2Strawberry" type="Sprite" parent="Palettes"]
+visible = false
+material = ExtResource( 8 )
+position = Vector2( 960, 540 )
+scale = Vector2( 31, 18 )
+texture = ExtResource( 4 )
+
+[node name="Palette3Midnight" type="Sprite" parent="Palettes"]
+visible = false
+material = ExtResource( 9 )
+position = Vector2( 960, 540 )
+scale = Vector2( 31, 18 )
+texture = ExtResource( 4 )
+
+[node name="Palette4Sunset" type="Sprite" parent="Palettes"]
+visible = false
+material = ExtResource( 7 )
+position = Vector2( 960, 540 )
+scale = Vector2( 31, 18 )
+texture = ExtResource( 4 )
+
+[node name="Palette5DarkMode" type="Sprite" parent="Palettes"]
+visible = false
+material = ExtResource( 19 )
+position = Vector2( 960, 540 )
+scale = Vector2( 31, 18 )
+texture = ExtResource( 4 )
+
+[node name="Palette6Jungle" type="Sprite" parent="Palettes"]
+visible = false
+material = ExtResource( 10 )
+position = Vector2( 960, 540 )
+scale = Vector2( 31, 18 )
+texture = ExtResource( 4 )
+
+[node name="Palette7Coffee" type="Sprite" parent="Palettes"]
+visible = false
+material = ExtResource( 23 )
+position = Vector2( 960, 540 )
+scale = Vector2( 31, 18 )
+texture = ExtResource( 4 )
+
+[node name="Palette8Hollow" type="Sprite" parent="Palettes"]
+visible = false
+material = ExtResource( 24 )
+position = Vector2( 960, 540 )
+scale = Vector2( 31, 18 )
+texture = ExtResource( 4 )
+
+[node name="Palette9PeamStunk" type="Sprite" parent="Palettes"]
+visible = false
+material = ExtResource( 25 )
+position = Vector2( 960, 540 )
+scale = Vector2( 31, 18 )
+texture = ExtResource( 4 )
+
+[node name="Palette10Internet" type="Sprite" parent="Palettes"]
+visible = false
+material = ExtResource( 26 )
+position = Vector2( 960, 540 )
+scale = Vector2( 31, 18 )
+texture = ExtResource( 4 )
+
+[node name="Palette11DemiBoy" type="Sprite" parent="Palettes"]
+visible = false
+material = ExtResource( 27 )
+position = Vector2( 960, 540 )
+scale = Vector2( 31, 18 )
+texture = ExtResource( 4 )
+
+[node name="Palette12Warm" type="Sprite" parent="Palettes"]
+visible = false
+material = ExtResource( 30 )
+position = Vector2( 960, 540 )
+scale = Vector2( 31, 18 )
+texture = ExtResource( 4 )
+
+[node name="Palette13Myst" type="Sprite" parent="Palettes"]
+visible = false
+material = ExtResource( 29 )
+position = Vector2( 960, 540 )
+scale = Vector2( 31, 18 )
+texture = ExtResource( 4 )
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 3 )
+volume_db = -6.0
+
+[connection signal="pressed" from="GUI/PauseMenu/ResumeButton" to="GUI/PauseMenu" method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="GUI/PauseMenu/MenuButton" to="GUI/PauseMenu" method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="GUI/PauseMenu/QuitButton" to="GUI/PauseMenu" method="_on_QuitButton_pressed"]
+[connection signal="animation_finished" from="GUI/TransitionColorRect/TransitionAnimationPlayer" to="EffectsHandler" method="_on_TransitionAnimationPlayer_animation_finished"]
+[connection signal="pressed" from="GUI/GameOverMenu/ReplayButton" to="GUI/GameOverMenu" method="_on_ReplayButton_pressed"]
+[connection signal="pressed" from="GUI/GameOverMenu/MenuButton" to="GUI/GameOverMenu" method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="GUI/GameOverMenu/QuitButton" to="GUI/GameOverMenu" method="_on_QuitButton_pressed"]

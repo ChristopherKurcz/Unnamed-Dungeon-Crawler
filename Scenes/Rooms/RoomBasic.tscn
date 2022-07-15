@@ -1,0 +1,820 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Materials/BasicWall.tres" type="Material" id=1]
+[ext_resource path="res://Materials/BasicFloor.tres" type="Material" id=2]
+[ext_resource path="res://Scripts/Rooms/RoomBasic.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Rooms/Gate.png" type="Texture" id=4]
+[ext_resource path="res://Materials/Black.tres" type="Material" id=5]
+[ext_resource path="res://Scripts/Rooms/RoomBasicDecor.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Rooms/Banners.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Drops/HeartDrop.png" type="Texture" id=8]
+
+[sub_resource type="CubeMesh" id=1]
+material = ExtResource( 2 )
+
+[sub_resource type="BoxShape" id=2]
+
+[sub_resource type="CubeMesh" id=3]
+material = ExtResource( 5 )
+
+[sub_resource type="BoxShape" id=4]
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 3, 2, 1 )
+
+[sub_resource type="CubeMesh" id=6]
+material = ExtResource( 1 )
+size = Vector3( 6, 2, 1 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 1, 2, 3 )
+
+[sub_resource type="CubeMesh" id=8]
+material = ExtResource( 1 )
+size = Vector3( 1, 2, 5 )
+
+[sub_resource type="CubeMesh" id=9]
+material = ExtResource( 1 )
+size = Vector3( 6, 1, 1 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 1, 2, 1 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 1, 2, 1 )
+
+[sub_resource type="CubeMesh" id=12]
+material = ExtResource( 1 )
+size = Vector3( 2, 2, 1 )
+
+[sub_resource type="CubeMesh" id=13]
+material = ExtResource( 1 )
+size = Vector3( 1, 2, 2 )
+
+[sub_resource type="CubeMesh" id=14]
+material = ExtResource( 1 )
+size = Vector3( 2, 1, 1 )
+
+[sub_resource type="BoxShape" id=15]
+extents = Vector3( 1, 2, 1 )
+
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 9, 3, 7 )
+
+[sub_resource type="Animation" id=17]
+resource_name = "GatesOpen"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Gates/GateUp/GateUpSprite:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1, 0.5 ), Vector3( 0, -1, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gates/GateLeft/GateLeftSprite:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.5, 1, 0 ), Vector3( 0.5, -1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Gates/GateRight/GateRightSprite:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.5, 1, 0 ), Vector3( -0.5, -1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Gates/GateDown/GateDownSprite:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -0.5 ), Vector3( 0, -1, -0.5 ) ]
+}
+
+[sub_resource type="CylinderShape" id=18]
+radius = 0.3
+height = 1.0
+
+[sub_resource type="Animation" id=19]
+resource_name = "HeartAquired"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("HeartSprite:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.1, 0 ), Vector3( 0, 0.6, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HeartSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -360, 0 ), Vector3( 0, -720, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HeartSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 6, 6, 0.999999 ), Vector3( 0.1, 0.1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "HeartIdle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("HeartSprite:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.2, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0.2, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HeartSprite:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.2, 2, 2.5, 3.2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -45, 0 ), Vector3( 0, -135, 0 ), Vector3( 0, -180, 0 ), Vector3( 0, -225, 0 ), Vector3( 0, -315, 0 ), Vector3( 0, -360, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HeartSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 6, 6, 1 ) ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "HeartSpawn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HeartSprite:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 1 ), Vector3( 7, 7, 1 ), Vector3( 6, 6, 1 ) ]
+}
+
+[node name="RoomBasic" type="Spatial"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Platforms" type="Spatial" parent="."]
+
+[node name="Platform" type="StaticBody" parent="Platforms"]
+transform = Transform( 8, 0, 0, 0, 1, 0, 0, 0, 6, 0, -1, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Platforms/Platform"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Platforms/Platform"]
+shape = SubResource( 2 )
+
+[node name="Platform2" type="StaticBody" parent="Platforms"]
+transform = Transform( 8, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Platforms/Platform2"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Platforms/Platform2"]
+shape = SubResource( 4 )
+
+[node name="Platform5" type="StaticBody" parent="Platforms"]
+transform = Transform( 14, 0, 0, 0, 8, 0, 0, 0, 1, 0, 2, -10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Platforms/Platform5"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Platforms/Platform5"]
+shape = SubResource( 4 )
+
+[node name="Platform6" type="StaticBody" parent="Platforms"]
+transform = Transform( 14, 0, 0, 0, 8, 0, 0, 0, 1, 0, 2, -10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Platforms/Platform6"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Platforms/Platform6"]
+shape = SubResource( 4 )
+
+[node name="Platform4" type="StaticBody" parent="Platforms"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 6, 9, -1, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Platforms/Platform4"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Platforms/Platform4"]
+shape = SubResource( 4 )
+
+[node name="Platform3" type="StaticBody" parent="Platforms"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 6, -9, -1, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Platforms/Platform3"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Platforms/Platform3"]
+shape = SubResource( 4 )
+
+[node name="BasicWalls" type="Spatial" parent="."]
+
+[node name="Wall1" type="StaticBody" parent="BasicWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BasicWalls/Wall1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 5 )
+
+[node name="TempMesh" type="MeshInstance" parent="BasicWalls/Wall1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="Wall2" type="StaticBody" parent="BasicWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BasicWalls/Wall2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 5 )
+
+[node name="TempMesh" type="MeshInstance" parent="BasicWalls/Wall2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="Wall3" type="StaticBody" parent="BasicWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BasicWalls/Wall3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 7 )
+
+[node name="TempMesh" type="MeshInstance" parent="BasicWalls/Wall3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="Wall4" type="StaticBody" parent="BasicWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BasicWalls/Wall4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 7 )
+
+[node name="TempMesh" type="MeshInstance" parent="BasicWalls/Wall4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="Wall5" type="StaticBody" parent="BasicWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BasicWalls/Wall5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 5 )
+
+[node name="TempMesh" type="MeshInstance" parent="BasicWalls/Wall5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="Wall6" type="StaticBody" parent="BasicWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BasicWalls/Wall6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 5 )
+
+[node name="TempMesh" type="MeshInstance" parent="BasicWalls/Wall6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="Wall7" type="StaticBody" parent="BasicWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BasicWalls/Wall7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 7 )
+
+[node name="TempMesh" type="MeshInstance" parent="BasicWalls/Wall7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="Wall8" type="StaticBody" parent="BasicWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BasicWalls/Wall8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 7 )
+
+[node name="TempMesh" type="MeshInstance" parent="BasicWalls/Wall8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="Wall9" type="StaticBody" parent="BasicWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BasicWalls/Wall9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 10 )
+
+[node name="Wall10" type="StaticBody" parent="BasicWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BasicWalls/Wall10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 10 )
+
+[node name="Wall11" type="StaticBody" parent="BasicWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BasicWalls/Wall11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 10 )
+
+[node name="Wall12" type="StaticBody" parent="BasicWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BasicWalls/Wall12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 10 )
+
+[node name="FillWalls" type="Spatial" parent="."]
+
+[node name="WallUp" type="StaticBody" parent="FillWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="FillWalls/WallUp"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 11 )
+disabled = true
+
+[node name="TempMesh" type="MeshInstance" parent="FillWalls/WallUp"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5 )
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="WallLeft" type="StaticBody" parent="FillWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="FillWalls/WallLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 11 )
+disabled = true
+
+[node name="TempMesh" type="MeshInstance" parent="FillWalls/WallLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="WallRight" type="StaticBody" parent="FillWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="FillWalls/WallRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 11 )
+disabled = true
+
+[node name="TempMesh" type="MeshInstance" parent="FillWalls/WallRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="WallDown" type="StaticBody" parent="FillWalls" groups=[
+"Wall",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="FillWalls/WallDown"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 11 )
+disabled = true
+
+[node name="TempMesh" type="MeshInstance" parent="FillWalls/WallDown"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
+mesh = SubResource( 14 )
+material/0 = null
+
+[node name="DoorAreas" type="Spatial" parent="."]
+
+[node name="DoorUp" type="Area" parent="DoorAreas"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="DoorAreas/DoorUp"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 15 )
+
+[node name="DoorDown" type="Area" parent="DoorAreas"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="DoorAreas/DoorDown"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 15 )
+
+[node name="DoorLeft" type="Area" parent="DoorAreas"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="DoorAreas/DoorLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 15 )
+
+[node name="DoorRight" type="Area" parent="DoorAreas"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="DoorAreas/DoorRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 15 )
+
+[node name="Decor" type="Spatial" parent="."]
+script = ExtResource( 6 )
+
+[node name="Banner1" type="Sprite3D" parent="Decor"]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, -6, 1, -4.999 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+frame = 35
+
+[node name="Banner2" type="Sprite3D" parent="Decor"]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, -5, 1, -4.999 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner3" type="Sprite3D" parent="Decor"]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, -4, 1, -4.999 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner4" type="Sprite3D" parent="Decor"]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, -3, 1, -4.999 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner5" type="Sprite3D" parent="Decor"]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, -2, 1, -4.999 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner6" type="Sprite3D" parent="Decor"]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, 2, 1, -4.999 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner7" type="Sprite3D" parent="Decor"]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, 3, 1, -4.999 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner8" type="Sprite3D" parent="Decor"]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, 4, 1, -4.999 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner9" type="Sprite3D" parent="Decor"]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, 5, 1, -4.999 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner10" type="Sprite3D" parent="Decor"]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, 6, 1, -4.999 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner11" type="Sprite3D" parent="Decor"]
+transform = Transform( -2.62268e-07, 0, -1, 0, 6, 0, 6, 0, -4.37114e-08, 6.99, 1, -4 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner12" type="Sprite3D" parent="Decor"]
+transform = Transform( -2.62268e-07, 0, -1, 0, 6, 0, 6, 0, -4.37114e-08, 6.99, 1, -3 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner13" type="Sprite3D" parent="Decor"]
+transform = Transform( -2.62268e-07, 0, -1, 0, 6, 0, 6, 0, -4.37114e-08, 6.99, 1, -2 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner14" type="Sprite3D" parent="Decor"]
+transform = Transform( -2.62268e-07, 0, -1, 0, 6, 0, 6, 0, -4.37114e-08, 6.99, 1, 2 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner15" type="Sprite3D" parent="Decor"]
+transform = Transform( -2.62268e-07, 0, -1, 0, 6, 0, 6, 0, -4.37114e-08, 6.99, 1, 3 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner16" type="Sprite3D" parent="Decor"]
+transform = Transform( -2.62268e-07, 0, -1, 0, 6, 0, 6, 0, -4.37114e-08, 6.99, 1, 4 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner17" type="Sprite3D" parent="Decor"]
+transform = Transform( -2.62268e-07, 0, 1, 0, 6, 0, -6, 0, -4.37114e-08, -6.99, 1, -4 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner18" type="Sprite3D" parent="Decor"]
+transform = Transform( -2.62268e-07, 0, 1, 0, 6, 0, -6, 0, -4.37114e-08, -6.99, 1, -3 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner19" type="Sprite3D" parent="Decor"]
+transform = Transform( -2.62268e-07, 0, 1, 0, 6, 0, -6, 0, -4.37114e-08, -6.99, 1, -2 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner20" type="Sprite3D" parent="Decor"]
+transform = Transform( -2.62268e-07, 0, 1, 0, 6, 0, -6, 0, -4.37114e-08, -6.99, 1, 2 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner21" type="Sprite3D" parent="Decor"]
+transform = Transform( -2.62268e-07, 0, 1, 0, 6, 0, -6, 0, -4.37114e-08, -6.99, 1, 3 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Banner22" type="Sprite3D" parent="Decor"]
+transform = Transform( -2.62268e-07, 0, 1, 0, 6, 0, -6, 0, -4.37114e-08, -6.99, 1, 4 )
+visible = false
+shaded = true
+texture = ExtResource( 7 )
+hframes = 32
+vframes = 2
+
+[node name="Gates" type="Spatial" parent="."]
+
+[node name="GateUp" type="StaticBody" parent="Gates" groups=[
+"Gate",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Gates/GateUp"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 11 )
+disabled = true
+
+[node name="GateUpSprite" type="Sprite3D" parent="Gates/GateUp"]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, 0, 1, 0.5 )
+shaded = true
+texture = ExtResource( 4 )
+
+[node name="GateLeft" type="StaticBody" parent="Gates" groups=[
+"Gate",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Gates/GateLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 11 )
+disabled = true
+
+[node name="GateLeftSprite" type="Sprite3D" parent="Gates/GateLeft"]
+transform = Transform( -2.62268e-07, 0, 1, 0, 6, 0, -6, 0, -4.37114e-08, 0.5, 1, 0 )
+shaded = true
+texture = ExtResource( 4 )
+
+[node name="GateRight" type="StaticBody" parent="Gates" groups=[
+"Gate",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Gates/GateRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 11 )
+disabled = true
+
+[node name="GateRightSprite" type="Sprite3D" parent="Gates/GateRight"]
+transform = Transform( 7.86805e-07, 0, -1, 0, 6, 0, 6, 0, 1.31134e-07, -0.5, 1, 0 )
+shaded = true
+texture = ExtResource( 4 )
+
+[node name="GateDown" type="StaticBody" parent="Gates" groups=[
+"Gate",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Gates/GateDown"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 11 )
+disabled = true
+
+[node name="GateDownSprite" type="Sprite3D" parent="Gates/GateDown"]
+transform = Transform( -6, 0, -8.74228e-08, 0, 6, 0, 5.24537e-07, 0, -1, 0, 0, -0.5 )
+flip_h = true
+shaded = true
+texture = ExtResource( 4 )
+
+[node name="RoomArea" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="RoomArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 16 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/GatesOpen = SubResource( 17 )
+
+[node name="HeartArea" type="Area" parent="." groups=[
+"Heart",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="HeartArea"]
+shape = SubResource( 18 )
+disabled = true
+
+[node name="HeartSprite" type="Sprite3D" parent="HeartArea"]
+transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 )
+texture = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HeartArea"]
+anims/HeartAquired = SubResource( 19 )
+anims/HeartIdle = SubResource( 20 )
+anims/HeartSpawn = SubResource( 21 )
+
+[connection signal="body_entered" from="DoorAreas/DoorUp" to="." method="_on_DoorUp_body_entered"]
+[connection signal="body_entered" from="DoorAreas/DoorDown" to="." method="_on_DoorDown_body_entered"]
+[connection signal="body_entered" from="DoorAreas/DoorLeft" to="." method="_on_DoorLeft_body_entered"]
+[connection signal="body_entered" from="DoorAreas/DoorRight" to="." method="_on_DoorRight_body_entered"]
+[connection signal="body_entered" from="RoomArea" to="." method="_on_RoomArea_body_entered"]
+[connection signal="body_exited" from="RoomArea" to="." method="_on_RoomArea_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="HeartArea/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

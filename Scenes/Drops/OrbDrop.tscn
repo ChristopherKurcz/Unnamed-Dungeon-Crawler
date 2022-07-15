@@ -1,0 +1,122 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Drops/orb.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Drops/OrbDrop.gd" type="Script" id=2]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.3
+height = 1.0
+
+[sub_resource type="CylinderShape" id=3]
+radius = 0.15
+height = 1.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 1.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("OrbSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("OrbSprite:translation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.02, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OrbSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 6, 6, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "pickedUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("OrbSprite:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("OrbSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OrbSprite:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 6, 6, 1 ), Vector3( 0, 0, 1 ) ]
+}
+
+[node name="OrbDrop" type="KinematicBody" groups=[
+"Orb",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+collision_layer = 0
+script = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="." groups=[
+"Orb",
+]]
+
+[node name="CollisionShape2" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 3 )
+
+[node name="OrbSprite" type="Sprite3D" parent="."]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, 0, 0, 0 )
+texture = ExtResource( 1 )
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Idle = SubResource( 2 )
+anims/pickedUp = SubResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]

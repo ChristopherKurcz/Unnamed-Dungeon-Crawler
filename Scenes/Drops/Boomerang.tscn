@@ -1,0 +1,198 @@
+[gd_scene load_steps=6 format=2]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.3
+height = 1.0
+
+[sub_resource type="StreamTexture" id=6]
+load_path = "res://.import/Boomerang.png-64071df5618320ebecafd4451a1aca1b.stex"
+
+[sub_resource type="Animation" id=2]
+resource_name = "Aquired"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.1, 0 ), Vector3( 0, 0.6, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -360, 0 ), Vector3( 0, -720, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 6, 6, 0.999999 ), Vector3( 0.1, 0.1, 1 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.1, 0 ), Vector3( 0, 0.2, 0 ), Vector3( 0, 0.1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.6, 0 ), Vector3( 0, 0.1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.1, 0.1, 1 ), Vector3( 6, 6, 0.999999 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "Idle", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="Area" type="Area" groups=[
+"Boomerang",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite3D" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0.1, 0 )
+texture = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Spawn"
+anims/Aquired = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/Spawn = SubResource( 4 )

@@ -1,0 +1,250 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Assets/Player/bruhTail.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Player/PlayerGhost.gd" type="Script" id=2]
+[ext_resource path="res://Assets/SFX/Hurt01.wav" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/Collisions/HurtBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Player/bruhHead.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Player/bruhHand.png" type="Texture" id=6]
+[ext_resource path="res://Assets/SFX/Pickup01.wav" type="AudioStream" id=7]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "ShootDown"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("LeftHand/LeftHandSprite:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0.1, 0, 0.2 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RightHand/RightHandSprite:translation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -0.1, 0, 0.2 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "ShootLeft"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("LeftHand/LeftHandSprite:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -0.15, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RightHand/RightHandSprite:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -0.1, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "ShootRight"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("RightHand/RightHandSprite:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0.15, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeftHand/LeftHandSprite:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0.1, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "ShootUp"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("RightHand/RightHandSprite:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -0.1, 0, -0.2 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeftHand/LeftHandSprite:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0.1, 0, -0.2 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TailSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TailSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TailSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="CylinderShape" id=7]
+radius = 0.45
+height = 1.0
+
+[sub_resource type="CylinderShape" id=8]
+radius = 0.35
+height = 1.0
+
+[node name="PlayerGhost" type="KinematicBody" groups=["Player"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+collision_layer = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="HeadSprite" type="Sprite3D" parent="."]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, 0, 0, 0 )
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="TailSprite" type="Sprite3D" parent="."]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, 0, 0, 0 )
+texture = ExtResource( 1 )
+hframes = 2
+
+[node name="Hands" type="Spatial" parent="."]
+
+[node name="HandAnimationPlayer" type="AnimationPlayer" parent="Hands"]
+anims/ShootDown = SubResource( 2 )
+anims/ShootLeft = SubResource( 3 )
+anims/ShootRight = SubResource( 4 )
+anims/ShootUp = SubResource( 5 )
+
+[node name="LeftHand" type="Spatial" parent="Hands"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, -0.2, 0 )
+
+[node name="LeftHandSprite" type="Sprite3D" parent="Hands/LeftHand"]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, 0, 0, 0 )
+texture = ExtResource( 6 )
+
+[node name="RightHand" type="Spatial" parent="Hands"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -0.2, 0 )
+
+[node name="RightHandSprite" type="Sprite3D" parent="Hands/RightHand"]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, 0, 0, 0 )
+texture = ExtResource( 6 )
+
+[node name="TailAnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Tail"
+anims/Tail = SubResource( 6 )
+
+[node name="InteractBox" type="Area" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="InteractBox"]
+shape = SubResource( 7 )
+
+[node name="HurtBox" parent="." groups=["Player"] instance=ExtResource( 4 )]
+collision_layer = 32
+collision_mask = 536
+
+[node name="CollisionShape" parent="HurtBox" index="0"]
+shape = SubResource( 8 )
+
+[node name="SFXHurt1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_db = 6.0
+
+[node name="SFXPickup" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 7 )
+unit_db = 6.0
+
+[connection signal="area_entered" from="InteractBox" to="." method="_on_InteractBox_area_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
+
+[editable path="HurtBox"]

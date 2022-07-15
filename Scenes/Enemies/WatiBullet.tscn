@@ -1,0 +1,201 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Scripts/Enemies/WatiBullet.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Collisions/SoftCollision.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Shadow/ShadowSmall.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Enemies/WatiBullet.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Collisions/PlayerDetection.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Collisions/HurtBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/SFX/Death01.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/SFX/Attack02.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/SFX/Attack03.wav" type="AudioStream" id=9]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.3
+height = 1.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "BatDeath"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 6, 6, 1 ), Vector3( 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteShadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 6, 6, 1 ), Vector3( 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 1 ), Vector3( 6, 6, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "WatiBulletSpin", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteShadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 1 ), Vector3( 6, 6, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.8
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 180 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 6, 6, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteShadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 6, 6, 1 ) ]
+}
+
+[sub_resource type="CylinderShape" id=5]
+radius = 0.45
+height = 1.0
+
+[sub_resource type="SphereShape" id=6]
+radius = 12.0
+
+[sub_resource type="CylinderShape" id=7]
+radius = 0.5
+height = 1.0
+
+[node name="WatiBullet" type="KinematicBody" groups=["Enemy"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+collision_layer = 8
+collision_mask = 9
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, 0, 0, 0 )
+alpha_cut = 2
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "WatiBulletSpawn"
+anims/BatDeath = SubResource( 2 )
+anims/WatiBulletSpawn = SubResource( 3 )
+anims/WatiBulletSpin = SubResource( 4 )
+
+[node name="SpriteShadow" type="Sprite3D" parent="."]
+transform = Transform( 6, 0, 0, 0, -2.62268e-07, 1, 0, -6, -4.37114e-08, 0, -0.49, 0 )
+alpha_cut = 2
+texture = ExtResource( 3 )
+
+[node name="HurtBox" parent="." groups=["Enemy"] instance=ExtResource( 6 )]
+collision_layer = 64
+collision_mask = 4
+
+[node name="CollisionShape" parent="HurtBox" index="0"]
+shape = SubResource( 5 )
+
+[node name="PlayerDetection" parent="." instance=ExtResource( 5 )]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" parent="PlayerDetection" index="0"]
+shape = SubResource( 6 )
+
+[node name="SoftCollision" type="Area" parent="."]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SoftCollision"]
+shape = SubResource( 7 )
+
+[node name="SFXDeath" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 7 )
+unit_db = -80.0
+
+[node name="SFXHurt1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 8 )
+unit_db = -80.0
+
+[node name="SFXHurt2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 9 )
+unit_db = -80.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+
+[editable path="HurtBox"]
+[editable path="PlayerDetection"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Checking Manifest.mp3-c592b238fadc20cfa3e16ab84076f70d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Game Music (By DOS-88)/Checking Manifest.mp3"
+dest_files=[ "res://.import/Checking Manifest.mp3-c592b238fadc20cfa3e16ab84076f70d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0.0

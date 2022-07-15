@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Billy's Sacrifice.mp3-e2afe14f597fe96c0e1f4e4c80cc4fb1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Game Music (By DOS-88)/Billy's Sacrifice.mp3"
+dest_files=[ "res://.import/Billy's Sacrifice.mp3-e2afe14f597fe96c0e1f4e4c80cc4fb1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

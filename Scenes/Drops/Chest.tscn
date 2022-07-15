@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Drops/RealChest.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Rooms/Chest.png" type="Texture" id=2]
+
+[sub_resource type="CylinderShape" id=18]
+radius = 0.3
+height = 1.0
+
+[sub_resource type="CylinderShape" id=19]
+radius = 0.45
+height = 1.0
+
+[node name="Chest" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+collision_layer = 9
+collision_mask = 9
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 18 )
+
+[node name="ChestSprite" type="Sprite3D" parent="."]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 1, 0, 0, 0 )
+shaded = true
+texture = ExtResource( 2 )
+hframes = 2
+
+[node name="HurtBox" type="Area" parent="."]
+collision_layer = 64
+collision_mask = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="HurtBox"]
+shape = SubResource( 19 )
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]

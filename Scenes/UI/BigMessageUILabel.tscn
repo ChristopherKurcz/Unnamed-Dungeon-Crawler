@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Fonts/MyFont-Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/UI/MessageUILabel.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_color = Color( 0.556863, 0.556863, 0.556863, 1 )
+extra_spacing_char = -3
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "FadeAway"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.627451, 0.627451, 0.627451, 1 ), Color( 0.298039, 0.298039, 0.298039, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "FadeIn"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.298039, 0.298039, 0.298039, 1 ), Color( 0.627451, 0.627451, 0.627451, 1 ) ]
+}
+
+[node name="BigMessageUILabel" type="Label"]
+margin_top = 20.0
+margin_right = 720.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Health UP"
+align = 1
+valign = 1
+autowrap = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "FadeIn"
+anims/FadeAway = SubResource( 2 )
+anims/FadeIn = SubResource( 3 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

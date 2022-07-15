@@ -1,0 +1,49 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 color_1 = vec4(.220, .102, .243, 1.0);
+uniform vec4 color_2 = vec4(.545, .314, .427, 1.0);
+uniform vec4 color_3 = vec4(.973, .565, .659, 1.0);
+uniform vec4 color_4 = vec4(.965, .929, .757, 1.0);
+
+uniform vec4 grey_1 = vec4(.000, .000, .000, 1.0);
+uniform vec4 grey_2 = vec4(.282, .282, .282, 1.0);
+uniform vec4 grey_3 = vec4(.639, .639, .639, 1.0);
+uniform vec4 grey_4 = vec4(1.0, 1.0, 1.0, 1.0);
+
+void fragment() {
+
+	vec4 colors[4] = {color_1, color_2, color_3, color_4};
+	vec4 greys[4] = {grey_1, grey_2, grey_3, grey_4};
+	float min_diff = -1.0;
+	vec4 min_color = vec4(0.0, 0.0, 0.0, 1.0);
+
+	vec2 uv = SCREEN_UV;
+
+	vec4 temp = textureLod(SCREEN_TEXTURE, uv, 0.0);
+
+	min_diff = 1000.0;
+	for (int i = 0; i < greys.length(); i++) {
+
+		float curr_dist = distance(greys[i], temp);
+		if (curr_dist < min_diff) {
+			min_diff = curr_dist;
+			min_color = colors[i];
+		}
+	}
+
+	COLOR.rgb = min_color.rgb;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/color_1 = Plane( 0.22, 0.102, 0.243, 1 )
+shader_param/color_2 = Plane( 0.545, 0.314, 0.427, 1 )
+shader_param/color_3 = Plane( 0.973, 0.565, 0.659, 1 )
+shader_param/color_4 = Plane( 0.965, 0.929, 0.757, 1 )
+shader_param/grey_1 = Plane( 0, 0, 0, 1 )
+shader_param/grey_2 = Plane( 0.282, 0.282, 0.282, 1 )
+shader_param/grey_3 = Plane( 0.639, 0.639, 0.639, 1 )
+shader_param/grey_4 = Plane( 1, 1, 1, 1 )

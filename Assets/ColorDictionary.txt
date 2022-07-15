@@ -1,0 +1,9 @@
+White 	(1,1,1): blank
+Black 	(0,0,0): spike
+Red   	(1,0,0): Clop
+Green 	(0,1,0): Skel
+Blue  	(0,0,1): Bat
+Yellow	(1,1,0): blob
+fuchsia (1,0,1): Gnom
+Aqua	(0,1,1): Waki
+chartreuse (0.5, 1, 0, 1 ): EnemyChest
