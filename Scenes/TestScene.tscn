@@ -573,9 +573,7 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="Room1/Platform"]
 shape = SubResource( 35 )
 
-[node name="Wall1" type="StaticBody" parent="Room1" groups=[
-"Wall",
-]]
+[node name="Wall1" type="StaticBody" parent="Room1" groups=["Wall"]]
 transform = Transform( 7, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 1, -4.5 )
 __meta__ = {
 "_edit_group_": true
@@ -588,9 +586,7 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="Room1/Wall1"]
 shape = SubResource( 35 )
 
-[node name="Wall2" type="StaticBody" parent="Room1" groups=[
-"Wall",
-]]
+[node name="Wall2" type="StaticBody" parent="Room1" groups=["Wall"]]
 transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 5, -6.5, 1, 0 )
 __meta__ = {
 "_edit_group_": true
@@ -603,9 +599,7 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="Room1/Wall2"]
 shape = SubResource( 35 )
 
-[node name="Wall3" type="StaticBody" parent="Room1" groups=[
-"Wall",
-]]
+[node name="Wall3" type="StaticBody" parent="Room1" groups=["Wall"]]
 transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 5, 6.5, 1, 0 )
 __meta__ = {
 "_edit_group_": true
@@ -618,9 +612,7 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="Room1/Wall3"]
 shape = SubResource( 35 )
 
-[node name="Wall4" type="StaticBody" parent="Room1" groups=[
-"Wall",
-]]
+[node name="Wall4" type="StaticBody" parent="Room1" groups=["Wall"]]
 transform = Transform( 7, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6 )
 __meta__ = {
 "_edit_group_": true
